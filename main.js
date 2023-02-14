@@ -14,11 +14,14 @@ const myProfile1={
     Name: "Rahim",
     Age:"30",
     city:"Dhaka",
-    Language: ["Bangla","English","Hindi"]
+    Language: ["Bangla","English","Hindi"],
+    Sports:"Football"
 }
 console.log(myProfile1.Language[1])
 myProfile1.Language[2]="Japanese"
 console.log(myProfile1.Language)
+delete myProfile1.Sports;
+console.log(myProfile1)
 //for function
 for(i=0;i<10;i++){
     console.log(i)
