@@ -115,6 +115,8 @@ console.log(text4.slice(1,4))
 console.log(text4.slice(-5,-1))
 console.log(text4.slice(4))
 console.log(text4.slice(-4))
+//splice
+
 //substring(negative is count zero)
 const text5="Programming is beauty"
 console.log(text5.substring(4,2))
@@ -170,6 +172,138 @@ let n3=BigInt("999999999999999999999")
 console.log(n3)
 console.log(typeof n2)
 console.log(typeof n3)
+//spread(...)operator
+const profile2=["Rahim",30]              //for array purpose
+const data=[...profile2,"Dhaka",1207, ]
+console.log(data);
+const profile3={                        //for object purpose
+    fName:"Abdul",
+    lName:"Salam",
+    age:49,
+    email:"biddut@gmail.com",
+    personTitle:"Mr",
+    fullName(){
+        return this.personTitle+" "+this.fName+" "+this.lName
+    }
+}
+console.log(profile3.fullName())
+const profile4={
+    greeting:"Hi",
+    ...profile3,
+    address:"Dhaka"
+}
+console.log(profile4)
+//rest(...)operator
+const profile5=["sumon",30,"Dhaka","Job","Bangla"] //for array purpose
+const [firstName,...data1]=profile5
+console.log(firstName)
+console.log(data1)
+const profile6={                        //for object purpose
+    fName:"Abdul",
+    lName:"Rashid",
+    age:49,
+    email:"biddut@gmail.com",
+    personTitle:"Mr",
+    fullName(){
+        return this.personTitle+" "+this.fName+" "+this.lName
+    }
+}
+const {fName,...data2}=profile6
+console.log(fName)
+console.log(data2)
+//nested data destructing
+const profile7={
+    name:"Saiful",
+    address:{
+        city:"Dhaka",
+        zone:"Dhaka-1207",
+        permanentAddress:{
+            village:"Swerapar",
+            postOffice:"Mirpur"
+        }
+    }
+}
+console.log(profile7.address.permanentAddress.postOffice)
+//console.log(city)
+const {address:{city}}=profile7
+console.log(city)
+const {contact:{phone}={phone:"0177-777777"}}=profile7
+console.log(phone)
+const {contact:{email:{gmail}={gmail:"biddut@gmail.com"}}={}}=profile7
+console.log(gmail)
+console.log(profile7)
+//nullish coalsing value(??) work for falsy value
+//falsy value= 0,null,undefined,true,false,NaN,""
+//nullish value(??) cann't work, when it's undefined or null value
+const var1=0;
+console.log(var1||23)
+console.log(var1??23)
+const var2="";
+console.log(var2||23)
+console.log(var2??23)
+const var3=null;
+console.log(var3||23)
+console.log(var3??23)
+//optional changing(?.) for finding value
+const profile8={                        
+    fName:"Jamal",
+    lName:"Uddin",
+    age:23,
+    email:{
+        gmail:{
+            gmail1:"jamal1111111111@gmail.com",
+            gmail2:"jamal2222@gmail.com"
+        },
+        yahoo:"jamal@yahoo.com"
+},
+    personTitle:"Mr",
+    fullName(){
+        return this.personTitle+" "+this.fName+" "+this.lName
+    }
+}
+console.log(profile8)
+const gmailJam=profile8.email && profile8.email.gmail && profile8.email.gmail.gmail2 //old version method
+console.log(gmailJam)
+const gmailJamal=profile8?.email?.gmail?.gmail1
+console.log(gmailJamal)
+//arguments use by old version
+function pro1(data){
+console.log(arguments)
+}
+pro1('sumon',30,'Dhaka',30)
+function pro2(...data){ //present use
+    console.log(data)
+    }
+    pro2('sumon',30,'Dhaka',30)
+//evalution function or functional expression
+function square(num){
+    return num * num
+}
+console.log(square(3))
+//another use
+ const multiply= function(num){
+    return num * num
+} 
+console.log(multiply(5));
+//another use functional expression give auto return          
+ const addition=(num)=> num + num
+
+console.log(addition(5))
+//another
+const pro3={                       
+    fName:"Abdul",
+    lName:"Rashid",
+    personTitle:"Mr",
+    fullName(){
+        return ()=>{        //return function(){ =undefined undefined undefined showing
+        return this.personTitle+" "+this.fName+" "+this.lName
+    }
+}
+}
+const proValue=pro3.fullName();
+console.log(proValue())
+
+
 
 
 
