@@ -314,7 +314,7 @@ function showScopeChain(){
     let m=70
     r=90//without let,const,var is global scope, but it's use not right
     console.log(r)
-    console.log(p)//this p doesn't find the value because of bubble up
+    //this p doesn't find the value because of bubble up
     function funC(){
         let p=30
         console.log(n)
@@ -325,6 +325,62 @@ function showScopeChain(){
     funC()
 }
 showScopeChain()
+//closure scope
+function printName(firstName){
+   return function inner(lastName){
+        return firstName+" "+lastName
+    }
+}
+const partialPrintName=printName("Maruf")//ex-father whill the property to son before date, then property belongs to son
+console.log(partialPrintName("Hasan"))
+
+//closure scope ex-2
+
+function playGame(num){
+   return ()=>{
+    let lifeSpan=num
+        console.log('---playing---')
+        lifeSpan--
+        console.log('---life time---',lifeSpan)
+    }
+    
+}
+const player1Play=playGame(3)
+console.log(player1Play())
+console.log(player1Play())
+lifeSpan=10//10 don't work because of lifeSpan 3 use as a functional scope
+console.log(player1Play())
+//for another player
+const player2Play=playGame(3)
+console.log(player2Play())
+console.log(player2Play())
+lifeSpan=10//10 don't work because of lifeSpan 3 use as a functional scope
+console.log(player2Play())
+//maintaining state
+//caching,memorize
+function calculation(){
+   const result=100*100
+    return(num)=>{
+        return result+num
+    }
+}
+const cal=calculation()
+console.log(cal(10))
+console.log(cal(145));
+//Hosting
+//java script works many small phase like creation phase, excution phase
+/*creation phase
+initialing variable(set undefined)
+function statement declaration*/
+/*excution phase
+variable value assign
+all CALL */
+//IIFE(Immediately invoked function expression)
+(function(){
+    num1=20
+    num2=30
+    console.log(num1+num2)
+})()
 
 
 
