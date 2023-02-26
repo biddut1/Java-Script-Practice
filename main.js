@@ -303,7 +303,28 @@ const pro3={
 const proValue=pro3.fullName();
 console.log(proValue())
 
+//scope
+/*scope 3types- 1.Global, 2.functional 3.block{} 
+1.let & const use all type but var use only Global and functional
+2.sometime var show undefined in browser(like alert), so we don't use var.
+3.scope chain work as bubble up(child to parent)*/
+let m=20
+function showScopeChain(){
+    let n=50
+    let m=70
+    r=90//without let,const,var is global scope, but it's use not right
+    console.log(r)
+    console.log(p)//this p doesn't find the value because of bubble up
+    function funC(){
+        let p=30
+        console.log(n)
+        console.log(m)
+        console.log(p)
 
+    }
+    funC()
+}
+showScopeChain()
 
 
 
